@@ -47,7 +47,10 @@ foreign import data LaunchedPromise :: Type -> Type
 
 -- | Equivalent of `new Dexie.Promise((resolve, reject) => ...)`.
 -- | Use with caution with non-indexed db related async operations if you do no want to close transactions early.
-foreign import new :: forall v. ((v -> Effect Unit) -> (Error -> Effect Unit) -> Effect Unit) -> Promise v
+new :: forall v. ((v -> Effect Unit) -> (Error -> Effect Unit) -> Effect Unit) -> Promise v
+new = _new
+
+foreign import _new :: forall v. ((v -> Effect Unit) -> (Error -> Effect Unit) -> Effect Unit) -> Promise v
 
 -- | Documentation: [Promise.all()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 foreign import all :: forall v. Array (Promise v) -> Promise (Array v)
@@ -59,10 +62,14 @@ foreign import allSettled :: forall v. Array (Promise v) -> Promise (Array v)
 foreign import any :: forall v. Array (Promise v) -> Promise (Array v)
 
 -- | Documentation: [Promise.prototype.catch()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
-foreign import catch :: forall v. (Error -> Promise v) -> Promise v -> Promise v
+catch :: forall v. (Error -> Promise v) -> Promise v -> Promise v
+catch = _catch
+foreign import _catch :: forall v. (Error -> Promise v) -> Promise v -> Promise v
 
 -- | Documentation: [Promise.prototype.finally()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally)
-foreign import finally :: forall v. Effect Unit -> Promise v -> Promise v
+finally :: forall v. Effect Unit -> Promise v -> Promise v
+finally = _finally
+foreign import _finally :: forall v. Effect Unit -> Promise v -> Promise v
 
 -- | Documentation: [Promise.race()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)
 foreign import race :: forall v. Array (Promise v) -> Promise v
@@ -129,3 +136,5 @@ toAff promise = liftAff $ makeAff $ \cb -> do
     # void
 
   mempty
+
+

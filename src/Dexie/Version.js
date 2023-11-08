@@ -1,17 +1,17 @@
-exports._stores = function (storesObject) {
+export const _stores = function (storesObject) {
   return function (version) {
     return function () {
-      return version.stores(storesObject)
-    }
-  }
-}
+      return version.stores(storesObject);
+    };
+  };
+};
 
-exports._upgrade = function (callback) {
+export const _upgrade = function (callback) {
   return function (version) {
     return function () {
       return version.upgrade(function (trnx) {
-        return callback(trnx)()
-      })
-    }
-  }
-}
+        return callback(trnx)();
+      });
+    };
+  };
+};

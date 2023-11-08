@@ -1,198 +1,198 @@
-exports._and = function (filter) {
+export const _and = function (filter) {
   return function (collection) {
     return function () {
-      return collection.and(filter)
-    }
-  }
-}
+      return collection.and(filter);
+    };
+  };
+};
 
-exports._clone = function (collection) {
+export const _clone = function (collection) {
   return function () {
-    return collection.clone()
-  }
-}
+    return collection.clone();
+  };
+};
 
-exports._count = function (collection) {
+export const _count = function (collection) {
   return function () {
-    return collection.count()
-  }
-}
+    return collection.count();
+  };
+};
 
-exports._delete = function (collection) {
+export const _delete = function (collection) {
   return function () {
-    return collection.delete()
-  }
-}
+    return collection.delete();
+  };
+};
 
-exports._distinct = function (collection) {
+export const _distinct = function (collection) {
   return function () {
-    return collection.distinct()
-  }
-}
+    return collection.distinct();
+  };
+};
 
-exports._each = function (callback) {
+export const _each = function (callback) {
   return function (collection) {
     return function () {
       return collection.each(function (item) {
-        callback(item)()
-      })
-    }
-  }
-}
+        callback(item)();
+      });
+    };
+  };
+};
 
-exports._eachKey = function (callback) {
+export const _eachKey = function (callback) {
   return function (collection) {
     return function () {
       return collection.eachKey(function (key) {
-        callback(key)()
-      })
-    }
-  }
-}
+        callback(key)();
+      });
+    };
+  };
+};
 
-exports._eachPrimaryKey = function (callback) {
+export const _eachPrimaryKey = function (callback) {
   return function (collection) {
     return function () {
       return collection.eachPrimaryKey(function (primaryKey) {
-        callback(primaryKey)()
-      })
-    }
-  }
-}
+        callback(primaryKey)();
+      });
+    };
+  };
+};
 
-exports._eachUniqueKey = function (callback) {
+export const _eachUniqueKey = function (callback) {
   return function (collection) {
     return function () {
       return collection.eachUniqueKey(function (uniqueKey) {
-        callback(uniqueKey)()
-      })
-    }
-  }
-}
+        callback(uniqueKey)();
+      });
+    };
+  };
+};
 
-exports._filter = function (filter) {
+export const _filter = function (filter) {
   return function (collection) {
     return function () {
-      return collection.filter(filter)
-    }
-  }
-}
+      return collection.filter(filter);
+    };
+  };
+};
 
-exports._first = function (collection) {
+export const _first = function (collection) {
   return function () {
-    return collection.first()
-  }
-}
+    return collection.first();
+  };
+};
 
-exports._keys = function (collection) {
+export const _keys = function (collection) {
   return function () {
-    return collection.keys()
-  }
-}
+    return collection.keys();
+  };
+};
 
-exports._last = function (collection) {
+export const _last = function (collection) {
   return function () {
-    return collection.last()
-  }
-}
+    return collection.last();
+  };
+};
 
-exports._limit = function (count) {
+export const _limit = function (count) {
   return function (collection) {
     return function () {
-      return collection.limit(count)
-    }
-  }
-}
+      return collection.limit(count);
+    };
+  };
+};
 
-exports._modify = function (changes) {
+export const _modify = function (changes) {
   return function (collection) {
     return function () {
-      return collection.modify(changes)
-    }
-  }
-}
+      return collection.modify(changes);
+    };
+  };
+};
 
-exports._offset = function (count) {
+export const _offset = function (count) {
   return function (collection) {
     return function () {
-      return collection.offset(count)
-    }
-  }
-}
+      return collection.offset(count);
+    };
+  };
+};
 
-exports._or = function (indexName) {
+export const _or = function (indexName) {
   return function (collection) {
     return function () {
-      return collection.or(indexName)
-    }
-  }
-}
+      return collection.or(indexName);
+    };
+  };
+};
 
-exports._primaryKeys = function (collection) {
+export const _primaryKeys = function (collection) {
   return function () {
-    return collection.primaryKeys()
-  }
-}
+    return collection.primaryKeys();
+  };
+};
 
-exports._raw = function (collection) {
+export const _raw = function (collection) {
   return function () {
-    return collection.raw()
-  }
-}
+    return collection.raw();
+  };
+};
 
-exports._reverse = function (collection) {
+export const _reverse = function (collection) {
   return function () {
-    return collection.reverse()
-  }
-}
+    return collection.reverse();
+  };
+};
 
-exports._sortBy = function (keyPath) {
+export const _sortBy = function (keyPath) {
   return function (collection) {
     return function () {
-      return collection.sortBy(keyPath)
-    }
-  }
-}
+      return collection.sortBy(keyPath);
+    };
+  };
+};
 
-exports._toArray = function (collection) {
+export const _toArray = function (collection) {
   return function () {
-    return collection.toArray()
-  }
-}
+    return collection.toArray();
+  };
+};
 
-exports._uniqueKeys = function (collection) {
+export const _uniqueKeys = function (collection) {
   return function () {
-    return collection.uniqueKeys()
-  }
-}
+    return collection.uniqueKeys();
+  };
+};
 
-exports._until = function (filterFn) {
+export const _until = function (filterFn) {
   return function (includeStopEntry) {
     return function (collection) {
       return function () {
-        return collection.until(filterFn, includeStopEntry)
-      }
-    }
-  }
-}
+        return collection.until(filterFn, includeStopEntry);
+      };
+    };
+  };
+};
 
 //
 // Helpers
 
-exports._createModifyMapper = function (getModifyReplaceValue) {
+export const _createModifyMapper = function (getModifyReplaceValue) {
   return function (isModifyIgnore) {
     return function (isModifyDelete) {
       return function (fn) {
         return function (value) {
-          var modifyEffect = fn(value)
-          if (isModifyIgnore(modifyEffect)) return
+          var modifyEffect = fn(value);
+          if (isModifyIgnore(modifyEffect)) return;
           if (isModifyDelete(modifyEffect)) {
-            delete this.value
-            return
+            delete this.value;
+            return;
           }
-          this.value = getModifyReplaceValue(modifyEffect)
-        }
-      }
-    }
-  }
-}
+          this.value = getModifyReplaceValue(modifyEffect);
+        };
+      };
+    };
+  };
+};
