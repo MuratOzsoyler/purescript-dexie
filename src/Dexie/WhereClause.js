@@ -1,137 +1,145 @@
-exports._above = function (lowerBound) {
+export const _above = function (lowerBound) {
   return function (whereClause) {
     return function () {
-      return whereClause.above(lowerBound)
-    }
-  }
-}
+      return whereClause.above(lowerBound);
+    };
+  };
+};
 
-exports._aboveOrEqual = function (lowerBound) {
+export const _aboveOrEqual = function (lowerBound) {
   return function (whereClause) {
     return function () {
-      return whereClause.aboveOrEqual(lowerBound)
-    }
-  }
-}
+      return whereClause.aboveOrEqual(lowerBound);
+    };
+  };
+};
 
-exports._anyOf = function (keys) {
+export const _anyOf = function (keys) {
   return function (whereClause) {
     return function () {
-      return whereClause.anyOf(keys)
-    }
-  }
-}
+      return whereClause.anyOf(keys);
+    };
+  };
+};
 
-exports._anyOfIgnoreCase = function (keys) {
+export const _anyOfIgnoreCase = function (keys) {
   return function (whereClause) {
     return function () {
-      return whereClause.anyOfIgnoreCase(keys)
-    }
-  }
-}
+      return whereClause.anyOfIgnoreCase(keys);
+    };
+  };
+};
 
-exports._below = function (upperBound) {
+export const _below = function (upperBound) {
   return function (whereClause) {
     return function () {
-      return whereClause.below(upperBound)
-    }
-  }
-}
+      return whereClause.below(upperBound);
+    };
+  };
+};
 
-exports._belowOrEqual = function (upperBound) {
+export const _belowOrEqual = function (upperBound) {
   return function (whereClause) {
     return function () {
-      return whereClause.belowOrEqual(upperBound)
-    }
-  }
-}
+      return whereClause.belowOrEqual(upperBound);
+    };
+  };
+};
 
-exports._between = function (lowerBound) {
+export const _between = function (lowerBound) {
   return function (upperBound) {
     return function (includeLower) {
       return function (includeUpper) {
         return function (whereClause) {
           return function () {
-            return whereClause.between(lowerBound, upperBound, includeLower, includeUpper)
-          }
-        }
-      }
-    }
-  }
-}
+            return whereClause.between(
+              lowerBound,
+              upperBound,
+              includeLower,
+              includeUpper
+            );
+          };
+        };
+      };
+    };
+  };
+};
 
-exports._equals = function (key) {
+export const _equals = function (key) {
   return function (whereClause) {
     return function () {
-      return whereClause.equals(key)
-    }
-  }
-}
+      return whereClause.equals(key);
+    };
+  };
+};
 
-exports._equalsIgnoreCase = function (key) {
+export const _equalsIgnoreCase = function (key) {
   return function (whereClause) {
     return function () {
-      return whereClause.equalsIgnoreCase(key)
-    }
-  }
-}
+      return whereClause.equalsIgnoreCase(key);
+    };
+  };
+};
 
-exports._inAnyRange = function (ranges) {
+export const _inAnyRange = function (ranges) {
   return function (includeLowers) {
     return function (includeUppers) {
       return function (whereClause) {
         return function () {
-          return whereClause.inAnyRange(ranges, { includeLowers: includeLowers, includeUppers: includeUppers })
-        }
-      }
-    }
-  }
-}
+          return whereClause.inAnyRange(ranges, {
+            includeLowers: includeLowers,
+            includeUppers: includeUppers,
+          });
+        };
+      };
+    };
+  };
+};
 
-exports._noneOf = function (keys) {
+export const _noneOf = function (keys) {
   return function (whereClause) {
     return function () {
-      return whereClause.noneOf(keys)
-    }
-  }
-}
+      return whereClause.noneOf(keys);
+    };
+  };
+};
 
-exports._notEqual = function (key) {
+export const _notEqual = function (key) {
   return function (whereClause) {
     return function () {
-      return whereClause.notEqual(key)
-    }
-  }
-}
+      return whereClause.notEqual(key);
+    };
+  };
+};
 
-exports._startsWith = function (prefix) {
+export const _startsWith = function (prefix) {
   return function (whereClause) {
     return function () {
-      return whereClause.startsWith(prefix)
-    }
-  }
-}
+      return whereClause.startsWith(prefix);
+    };
+  };
+};
 
-exports._startsWithAnyOf = function (prefixes) {
+export const _startsWithAnyOf = function (prefixes) {
   return function (whereClause) {
     return function () {
-      return whereClause.startsWithAnyOf(prefixes)
-    }
-  }
-}
+      return whereClause.startsWithAnyOf(prefixes);
+    };
+  };
+};
 
-exports._startsWithIgnoreCase = function (prefix) {
+export const _startsWithIgnoreCase = function (prefix) {
   return function (whereClause) {
     return function () {
-      return whereClause.startsWithIgnoreCase(prefix)
-    }
-  }
-}
+      return whereClause.startsWithIgnoreCase(prefix);
+    };
+  };
+};
 
-exports._startsWithAnyOfIgnoreCase = function (prefixes) {
+export const _startsWithAnyOfIgnoreCase = function (prefixes) {
   return function (whereClause) {
     return function () {
-      return whereClause.startsWithAnyOfIgnoreCase(prefixes)
-    }
-  }
-}
+      return whereClause.startsWithAnyOfIgnoreCase(prefixes);
+    };
+  };
+};

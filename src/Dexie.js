@@ -1,33 +1,33 @@
-var Dexie = require('dexie')
+import Dexie from "dexie";
 
-exports._new = function (dbName) {
+export const _new = function (dbName) {
   return function () {
-    return new Dexie(dbName)
-  }
-}
+    return new Dexie(dbName);
+  };
+};
 
-exports._delete = function (dbName) {
+export const _delete = function (dbName) {
   return function () {
-    return Dexie.delete(dbName)
-  }
-}
+    return Dexie.delete(dbName);
+  };
+};
 
-exports._getDatabaseNames = function () {
-  return Dexie.getDatabaseNames()
-}
+export const _getDatabaseNames = function () {
+  return Dexie.getDatabaseNames();
+};
 
-exports._exists = function (dbName) {
+export const _exists = function (dbName) {
   return function () {
-    return Dexie.exists(dbName)
-  }
-}
+    return Dexie.exists(dbName);
+  };
+};
 
-exports._getDebug = function () {
-  return Dexie.debug
-}
+export const _getDebug = function () {
+  return Dexie.debug;
+};
 
-exports._setDebug = function (isDebug) {
+export const _setDebug = function (isDebug) {
   return function () {
-    Dexie.debug = isDebug
-  }
-}
+    Dexie.debug = isDebug;
+  };
+};

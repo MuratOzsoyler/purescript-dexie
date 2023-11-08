@@ -1,100 +1,100 @@
-exports._add = function (item) {
+export const _add = function (item) {
   return function (nullableKey) {
     return function (table) {
       return function () {
-        return table.add(item, nullableKey)
-      }
-    }
-  }
-}
+        return table.add(item, nullableKey);
+      };
+    };
+  };
+};
 
-exports._bulkAdd = function (items) {
+export const _bulkAdd = function (items) {
   return function (nullableKeys) {
     return function (table) {
       return function () {
-        return table.bulkAdd(items, nullableKeys, { allKeys: true })
-      }
-    }
-  }
-}
+        return table.bulkAdd(items, nullableKeys, { allKeys: true });
+      };
+    };
+  };
+};
 
-exports._bulkDelete = function (keys) {
+export const _bulkDelete = function (keys) {
   return function (table) {
     return function () {
-      return table.bulkDelete(keys)
-    }
-  }
-}
+      return table.bulkDelete(keys);
+    };
+  };
+};
 
-exports._bulkGet = function (keys) {
+export const _bulkGet = function (keys) {
   return function (table) {
     return function () {
-      return table.bulkGet(keys)
-    }
-  }
-}
+      return table.bulkGet(keys);
+    };
+  };
+};
 
-exports._bulkPut = function (items) {
+export const _bulkPut = function (items) {
   return function (nullableKeys) {
     return function (table) {
       return function () {
-        return table.bulkPut(items, nullableKeys, { allKeys: true })
-      }
-    }
-  }
-}
+        return table.bulkPut(items, nullableKeys, { allKeys: true });
+      };
+    };
+  };
+};
 
-exports._clear = function (table) {
+export const _clear = function (table) {
   return function () {
-    return table.clear()
-  }
-}
+    return table.clear();
+  };
+};
 
-exports._count = function (table) {
+export const _count = function (table) {
   return function () {
-    return table.count()
-  }
-}
+    return table.count();
+  };
+};
 
-exports._delete = function (key) {
+export const _delete = function (key) {
   return function (table) {
     return function () {
-      return table.delete(key)
-    }
-  }
-}
+      return table.delete(key);
+    };
+  };
+};
 
-exports._each = function (callback) {
+export const _each = function (callback) {
   return function (table) {
     return function () {
       return table.each(function (item) {
-        callback(item)()
-      })
-    }
-  }
-}
+        callback(item)();
+      });
+    };
+  };
+};
 
-exports._filter = function (filterFn) {
+export const _filter = function (filterFn) {
   return function (table) {
     return function () {
-      return table.filter(filterFn)
-    }
-  }
-}
+      return table.filter(filterFn);
+    };
+  };
+};
 
-exports._get = function (indexQuery) {
+export const _get = function (indexQuery) {
   return function (table) {
     return function () {
-      return table.get(indexQuery)
-    }
-  }
-}
+      return table.get(indexQuery);
+    };
+  };
+};
 
-exports._onCreating = function (callback) {
+export const _onCreating = function (callback) {
   return function (table) {
     return function () {
       function listener(primaryKey, item, transaction) {
-        var self = this
+        var self = this;
         return callback({
           primaryKey,
           item,
@@ -103,41 +103,41 @@ exports._onCreating = function (callback) {
             return function () {
               self.onsuccess = function (primaryKey) {
                 try {
-                  return onSuccess(primaryKey)()
+                  return onSuccess(primaryKey)();
                 } catch (error) {
-                  console.error(error)
+                  console.error(error);
                 }
-              }
-            }
+              };
+            };
           },
           setOnError: function (onError) {
             return function () {
               self.onerror = function (error) {
                 try {
-                  return onError(error)()
+                  return onError(error)();
                 } catch (error) {
-                  console.error(error)
+                  console.error(error);
                 }
-              }
-            }
+              };
+            };
           },
-        })()
+        })();
       }
 
-      table.hook('creating', listener)
+      table.hook("creating", listener);
 
       return function () {
-        table.hook('creating').unsubscribe(listener)
-      }
-    }
-  }
-}
+        table.hook("creating").unsubscribe(listener);
+      };
+    };
+  };
+};
 
-exports._onDeleting = function (callback) {
+export const _onDeleting = function (callback) {
   return function (table) {
     return function () {
       function listener(primaryKey, item, transaction) {
-        var self = this
+        var self = this;
         callback({
           primaryKey,
           item,
@@ -146,57 +146,57 @@ exports._onDeleting = function (callback) {
             return function () {
               self.onsuccess = function () {
                 try {
-                  return onSuccess()
+                  return onSuccess();
                 } catch (error) {
-                  console.error(error)
+                  console.error(error);
                 }
-              }
-            }
+              };
+            };
           },
           setOnError: function (onError) {
             return function () {
               self.onerror = function (error) {
                 try {
-                  return onError(error)()
+                  return onError(error)();
                 } catch (error) {
-                  console.error(error)
+                  console.error(error);
                 }
-              }
-            }
+              };
+            };
           },
-        })()
+        })();
       }
 
-      table.hook('deleting', listener)
+      table.hook("deleting", listener);
 
       return function () {
-        table.hook('deleting').unsubscribe(listener)
-      }
-    }
-  }
-}
+        table.hook("deleting").unsubscribe(listener);
+      };
+    };
+  };
+};
 
-exports._onReading = function (callback) {
+export const _onReading = function (callback) {
   return function (table) {
     return function () {
       function listener(item) {
-        return callback(item)()
+        return callback(item)();
       }
 
-      table.hook('reading', listener)
+      table.hook("reading", listener);
 
       return function () {
-        table.hook('reading').unsubscribe(listener)
-      }
-    }
-  }
-}
+        table.hook("reading").unsubscribe(listener);
+      };
+    };
+  };
+};
 
-exports._onUpdating = function (callback) {
+export const _onUpdating = function (callback) {
   return function (table) {
     return function () {
       function listener(modifications, primaryKey, item, transaction) {
-        var self = this
+        var self = this;
         return callback({
           modifications,
           primaryKey,
@@ -206,116 +206,116 @@ exports._onUpdating = function (callback) {
             return function () {
               self.onsuccess = function (updatedItem) {
                 try {
-                  return onSuccess(updatedItem)()
+                  return onSuccess(updatedItem)();
                 } catch (error) {
-                  console.error(error)
+                  console.error(error);
                 }
-              }
-            }
+              };
+            };
           },
           setOnError: function (onError) {
             return function () {
               self.onerror = function (error) {
                 try {
-                  return onError(error)()
+                  return onError(error)();
                 } catch (error) {
-                  console.error(error)
+                  console.error(error);
                 }
-              }
-            }
+              };
+            };
           },
-        })()
+        })();
       }
 
-      table.hook('updating', listener)
+      table.hook("updating", listener);
 
       return function () {
-        table.hook('updating').unsubscribe(listener)
-      }
-    }
-  }
-}
+        table.hook("updating").unsubscribe(listener);
+      };
+    };
+  };
+};
 
-exports._limit = function (n) {
+export const _limit = function (n) {
   return function (table) {
     return function () {
-      return table.limit(n)
-    }
-  }
-}
+      return table.limit(n);
+    };
+  };
+};
 
-exports._name = function (table) {
+export const _name = function (table) {
   return function () {
-    return table.name
-  }
-}
+    return table.name;
+  };
+};
 
-exports._offset = function (n) {
+export const _offset = function (n) {
   return function (table) {
     return function () {
-      return table.offset(n)
-    }
-  }
-}
+      return table.offset(n);
+    };
+  };
+};
 
-exports._orderBy = function (index) {
+export const _orderBy = function (index) {
   return function (table) {
     return function () {
-      return table.orderBy(index)
-    }
-  }
-}
+      return table.orderBy(index);
+    };
+  };
+};
 
-exports._put = function (item) {
+export const _put = function (item) {
   return function (nullableKey) {
     return function (table) {
       return function () {
-        return table.put(item, nullableKey)
-      }
-    }
-  }
-}
+        return table.put(item, nullableKey);
+      };
+    };
+  };
+};
 
-exports._reverse = function (table) {
+export const _reverse = function (table) {
   return function () {
-    return table.reverse()
-  }
-}
+    return table.reverse();
+  };
+};
 
-exports._toArray = function (table) {
+export const _toArray = function (table) {
   return function () {
-    return table.toArray()
-  }
-}
+    return table.toArray();
+  };
+};
 
-exports._toCollection = function (table) {
+export const _toCollection = function (table) {
   return function () {
-    return table.toCollection()
-  }
-}
+    return table.toCollection();
+  };
+};
 
-exports._update = function (key) {
+export const _update = function (key) {
   return function (changes) {
     return function (table) {
       return function () {
-        return table.update(key, changes)
-      }
-    }
-  }
-}
+        return table.update(key, changes);
+      };
+    };
+  };
+};
 
-exports._whereClause = function (index) {
+export const _whereClause = function (index) {
   return function (table) {
     return function () {
-      return table.where(index)
-    }
-  }
-}
+      return table.where(index);
+    };
+  };
+};
 
-exports._whereValues = function (valuesObject) {
+export const _whereValues = function (valuesObject) {
   return function (table) {
     return function () {
-      return table.where(valuesObject)
-    }
-  }
-}
+      return table.where(valuesObject);
+    };
+  };
+};

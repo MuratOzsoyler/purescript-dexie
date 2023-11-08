@@ -1,13 +1,13 @@
-exports._abort = function (transaction) {
+export const _abort = function (transaction) {
   return function () {
-    return transaction.abort()
-  }
-}
+    return transaction.abort();
+  };
+};
 
-exports._table = function (storeName) {
+export const _table = function (storeName) {
   return function (transaction) {
     return function () {
-      return transaction.table(storeName)
-    }
-  }
-}
+      return transaction.table(storeName);
+    };
+  };
+};
