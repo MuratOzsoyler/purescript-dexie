@@ -273,7 +273,9 @@ tableTests = suite "table" do
     void $ try $ Table.add_ "Mike" (Just 1) foo
 
     -- Check that the ref is new error
-    assertEqual "Key already exists in the object store." =<< map Error.message (liftEffect (Ref.read ref))
+    assertEqual "ConstraintError" =<< map Error.name (liftEffect $ Ref.read ref)
+  -- Assert below is not working posibly due to browser difference
+  -- assertEqual "Key already exists in the object store." =<< map Error.message (liftEffect (Ref.read ref))
 
   test "can fail an add by throwing in onCreating" $ withCleanDB "db" $ \db -> toAff do
     DB.version 1 db >>= Version.stores_ (fromHomogeneous { foo: Just "++" })
@@ -613,3 +615,5 @@ tableTests = suite "table" do
 
     -- Check it equals what we'd expect
     assertEqual [ "John", "Jane" ] $ map (unsafeFromForeign >>> getName) result
+
+
